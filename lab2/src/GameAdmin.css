@@ -1,0 +1,20 @@
+.NameSetters div{
+    display:flex;
+    margin:20px;
+}
+
+.NameSetters input{
+    width:85%;
+    border: 2px solid black;
+}
+.NameSetters label{
+    width:15%;
+}
+
+.breakline {
+    margin: 20px;
+    padding: 0;
+    background-color: black;
+    width: 97%;
+    height: 3px;
+}
