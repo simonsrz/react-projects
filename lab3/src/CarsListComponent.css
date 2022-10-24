@@ -1,0 +1,31 @@
+#searchBar{
+    margin: 15px;
+    width:500px;
+    height: 30px;
+    position: relative;
+}
+
+#searchBar input{
+    position: absolute;
+    border: 2px solid black;
+    width:260px;
+    height: 30px;
+    font-size: 25px;
+    margin:0;
+}
+#searchBar button{
+    position: absolute;
+    border: 2px solid black;
+    width:100px;
+    height: 36px;
+    box-shadow: 2px 2px;
+    background-color: white;
+    cursor: pointer;
+    left: 280px;
+}
+
+#searchButton:active{
+    box-shadow: none;
+    left: 282px;
+    top: 2px;
+}

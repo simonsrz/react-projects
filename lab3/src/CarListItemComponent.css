@@ -1,0 +1,107 @@
+#carElement{
+    border: 2px solid black;
+    margin:15px;
+    padding:5px;
+    height:150px;
+    display:flex;
+    justify-content:space-between;
+    font-family: 'Kanit', sans-serif;
+}
+
+#carImg{
+    width: 20%;
+}
+
+#image{
+    outline: 2px solid black;
+    height: 100%;
+    width:100%;
+}
+
+#carName{
+    width: 25%;
+    text-align: start;
+    font-size: 2vw;
+    position: relative;
+}
+
+#carName p{
+    position: absolute;
+    margin:0;
+    left: 10px;
+    bottom: 0;
+}
+
+#carInfo{
+    width: 28%;
+    font-size: 16x;
+}
+
+#carInfo p{
+    margin: 19.5px;
+}
+
+#pricePanel{
+    width: 27%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#editPanel{
+    width: 27%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#pricePanel p,
+#editPanel p{
+    margin:0;
+}
+
+#price{
+    font-size: 30px;
+}
+
+#pricePanel div,
+#editPanel div{
+    width:100%;
+    height: 50px;
+    position:relative;
+}
+
+#saveButton, #carDelete, #carEdit{
+    position: absolute;
+    border: 2px solid black;
+    height: 50px;
+    width: 48%;
+    box-shadow: 2px 2px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#carDelete{
+    right: 0;
+}
+
+#priceInput{
+    width:92%;
+    border: 2px solid black;
+    height: 40px;
+    font-size: 30px;
+}
+
+#saveButton:active, #carEdit:active{
+    box-shadow: none;
+    top:2px;
+    left:2px;
+}
+
+#carDelete:active{
+    box-shadow: none;
+    bottom:-2px;
+    right: -2px;
+}
