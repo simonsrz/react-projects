@@ -8,17 +8,10 @@ type TProps = {
     toNameStep: () => void;
     addressesSubmit: (addrData: Addresses) => void;
     hidden: number;
-    //personalAddressData: Addresses;
 }
 
 const AddressStep = (props: TProps) => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<Addresses>();
-    // const [delStreet, setDelStreet] = useState(props.personalAddressData.deliveryAddress.street);
-    // const [delZip, setDelZip] = useState(props.personalAddressData.deliveryAddress.zipCode);
-    // const [delCity, setDelCity] = useState(props.personalAddressData.deliveryAddress.city);
-    // const [invStreet, setInvStreet] = useState(props.personalAddressData.invoiceAddress.street);
-    // const [invZip, setInvZip] = useState(props.personalAddressData.invoiceAddress.zipCode);
-    // const [invCity, setInvCity] = useState(props.personalAddressData.invoiceAddress.city);
     const [delStreet, setDelStreet] = useState("");
     const [delZip, setDelZip] = useState("");
     const [delCity, setDelCity] = useState("");
