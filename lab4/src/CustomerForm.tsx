@@ -10,38 +10,28 @@ import './styling.css';
 const CustomerForm = () => {
     const [currStep, setCurrStep] = useState(1);
     const [personalData, setPersonalData] = useState(new PersonalData('', '', ''));
-
     const [addressData, setAddressData] = useState<Addresses>({
         deliveryAddress: new AddressData("", "", ""),
         invoiceAddress: new AddressData("", "", "")
     });
 
-    const renderStep = () => {
-        if (currStep === 1) {
-            return <NameStep 
-                    personalData={personalData} 
-                    personalDataSubmit={(data: PersonalData) => setPersonalData(data)} 
-                    onSubmit={() => setCurrStep(2)} />
-        }
-        else if (currStep === 2) {
-            return <AddressStep 
-                    addressesSubmit={(data: Addresses) => setAddressData(data)}
-                    personalAddressData={addressData} 
-                    toNameStep={() => setCurrStep(1)} 
-                    onSubmit={() => setCurrStep(3)} />
-        }
-        else {
-            return <SummaryStep
-                    addressesPass={addressData}
-                    personalDataPass={personalData}
-                    toNameStep={() => setCurrStep(1)}
-                    toAddressStep={() => setCurrStep(2)} />
-        }
-    }
-
     return (
         <div id="mainForm">
-            {renderStep()}
+            <NameStep
+                hidden={currStep}
+                personalDataSubmit={(data: PersonalData) => setPersonalData(data)}
+                onSubmit={() => setCurrStep(2)} />
+            <AddressStep
+                hidden={currStep}
+                addressesSubmit={(data: Addresses) => setAddressData(data)}
+                toNameStep={() => setCurrStep(1)}
+                onSubmit={() => setCurrStep(3)} />
+            <SummaryStep
+                hidden={currStep}
+                addressesPass={addressData}
+                personalDataPass={personalData}
+                toNameStep={() => setCurrStep(1)}
+                toAddressStep={() => setCurrStep(2)} />
         </div>
     );
 }

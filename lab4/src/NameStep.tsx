@@ -5,18 +5,21 @@ import './styling.css';
 type TProps = {
     onSubmit: () => void;
     personalDataSubmit: (pData: PersonalData) => void;
-    personalData: PersonalData;
+    hidden: number;
 }
 
 const NameStep = (props: TProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<PersonalData>();
+    // const [firstName, setFirstName] = useState("");
+    // const [lastName, setLastName] = useState("");
+    // const [email, setEmail] = useState("");
 
     const submitClick: SubmitHandler<PersonalData> = data => {
         props.personalDataSubmit(data);
         props.onSubmit();
     }
     return (
-        <div className="mainPageDiv">
+        <div hidden={props.hidden!==1} className="mainPageDiv">
             <form noValidate id="nameStep" onSubmit={handleSubmit(submitClick)}>
                 <h2>Personal Data</h2>
                 <div id="firstname">
@@ -25,7 +28,7 @@ const NameStep = (props: TProps) => {
                         id="fname"
                         placeholder="Enter your first name"
                         autoComplete="off"
-                        defaultValue={props.personalData.firstName}
+                        //defaultValue={firstName}
                         {...register("firstName", { required: true, maxLength: 20, pattern: /^[A-Za-z]*$/ })} />
                     {errors.firstName && errors.firstName.type === "required" && <span className="error">Name is required</span>}
                     {errors.firstName && errors.firstName.type === "maxLength" && <span className="error">Name is too long</span>}
@@ -37,7 +40,7 @@ const NameStep = (props: TProps) => {
                         id="lname"
                         placeholder="Enter your last name"
                         autoComplete="off"
-                        defaultValue={props.personalData.lastName}
+                        //defaultValue={lastName}
                         {...register("lastName", { required: true, maxLength: 20, pattern: /^[A-Za-z]*$/ })} />
                     {errors.lastName && errors.lastName.type === "required" && <span className="error">Last name is required</span>}
                     {errors.lastName && errors.lastName.type === "maxLength" && <span className="error">Last name is too long</span>}
@@ -49,7 +52,7 @@ const NameStep = (props: TProps) => {
                         id="mail"
                         placeholder="Enter your email"
                         autoComplete="off"
-                        defaultValue={props.personalData.email}
+                        //defaultValue={email}
                         {...register("email", { required: true, pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/ })} />
                     {errors.email && errors.email.type === "required" && <span className="error">E-mail is required</span>}
                     {errors.email && errors.email.type === "pattern" && <span className="error">E-mail is invalid</span>}

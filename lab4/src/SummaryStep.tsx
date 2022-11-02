@@ -7,12 +7,13 @@ type TProps = {
     addressesPass: Addresses;
     toNameStep: () => void;
     toAddressStep: () => void;
+    hidden:number;
 }
 
 const SummaryStep = (props: TProps) => {
 
     return (
-        <div className="mainPageDiv">
+        <div hidden={props.hidden!==3} className="mainPageDiv">
             <h2>PERSONAL DATA</h2>
             <p>FIRST NAME: {props.personalDataPass.firstName}</p>
             <p>LAST NAME: {props.personalDataPass.lastName}</p>

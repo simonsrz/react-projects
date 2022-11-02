@@ -7,17 +7,24 @@ type TProps = {
     onSubmit: () => void;
     toNameStep: () => void;
     addressesSubmit: (addrData: Addresses) => void;
-    personalAddressData: Addresses;
+    hidden: number;
+    //personalAddressData: Addresses;
 }
 
 const AddressStep = (props: TProps) => {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<Addresses>();
-    const [delStreet, setDelStreet] = useState(props.personalAddressData.deliveryAddress.street);
-    const [delZip, setDelZip] = useState(props.personalAddressData.deliveryAddress.zipCode);
-    const [delCity, setDelCity] = useState(props.personalAddressData.deliveryAddress.city);
-    const [invStreet, setInvStreet] = useState(props.personalAddressData.invoiceAddress.street);
-    const [invZip, setInvZip] = useState(props.personalAddressData.invoiceAddress.zipCode);
-    const [invCity, setInvCity] = useState(props.personalAddressData.invoiceAddress.city);
+    // const [delStreet, setDelStreet] = useState(props.personalAddressData.deliveryAddress.street);
+    // const [delZip, setDelZip] = useState(props.personalAddressData.deliveryAddress.zipCode);
+    // const [delCity, setDelCity] = useState(props.personalAddressData.deliveryAddress.city);
+    // const [invStreet, setInvStreet] = useState(props.personalAddressData.invoiceAddress.street);
+    // const [invZip, setInvZip] = useState(props.personalAddressData.invoiceAddress.zipCode);
+    // const [invCity, setInvCity] = useState(props.personalAddressData.invoiceAddress.city);
+    const [delStreet, setDelStreet] = useState("");
+    const [delZip, setDelZip] = useState("");
+    const [delCity, setDelCity] = useState("");
+    const [invStreet, setInvStreet] = useState("");
+    const [invZip, setInvZip] = useState("");
+    const [invCity, setInvCity] = useState("");
     const [invAsDel, setInvAsDel] = useState(false);
 
     useEffect(() => {
@@ -49,7 +56,7 @@ const AddressStep = (props: TProps) => {
     }
 
     return (
-        <div className="mainPageDiv">
+        <div hidden={props.hidden!==2} className="mainPageDiv">
             <form noValidate id="addressForm" onSubmit={handleSubmit(submitClick)}>
                 <div id="delieveryAddress">
                     <h2>Delivery Address</h2>
