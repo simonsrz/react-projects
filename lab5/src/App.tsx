@@ -8,7 +8,7 @@ function App() {
     const onet = getWeatherFromOnet();
     const google = getWeatherFromGoogle();
     Promise.race([meteo, google, onet]).then(value => { console.log(value); }).catch((errorMsg) => {
-
+      console.log(errorMsg);
     })
   }
 
@@ -18,28 +18,31 @@ function App() {
 
   const getCurrentTime = (result: string, seconds: number, shouldFail: boolean) => {
     return new Promise((resolve, reject) => setTimeout(() => {
-      if ()
+      if (shouldFail) {
+        reject("Failed" + result);
+      } else {
         console.log(result);
-      resolve(result);
+        resolve(result);
+      }
     },
       seconds * 1000));
   }
 
   const getWeatherFromMeteo = () => {
     const location = getMyLocation("Meteo: Warsaw", 1);
-    const currTime = getCurrentTime("Meteo: 10*", 3);
+    const currTime = getCurrentTime("Meteo: 10*", 2, true);
     return Promise.all([location, currTime]);
   }
 
   const getWeatherFromOnet = () => {
-    const location = getMyLocation("Onet: Warsaw", 2);
-    const currTime = getCurrentTime("Onet: 10*", 4);
+    const location = getMyLocation("Onet: Warsaw", 3);
+    const currTime = getCurrentTime("Onet: 10*", 4, false);
     return Promise.all([location, currTime]);
   }
 
   const getWeatherFromGoogle = () => {
-    const location = getMyLocation("Google: Warsaw", 3);
-    const currTime = getCurrentTime("Google: 10*", 5);
+    const location = getMyLocation("Google: Warsaw", 5);
+    const currTime = getCurrentTime("Google: 10*", 6, false);
     return Promise.all([location, currTime]);
   }
 
