@@ -1,0 +1,9 @@
+td{
+    width:40px;
+    height:40px;
+    background-color: white;
+}
+
+#snake{
+    background-color: green;
+}
