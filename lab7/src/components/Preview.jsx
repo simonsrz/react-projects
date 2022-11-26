@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {LeftCountryCodeState, RightCountryCodeState, StadiumState, LeftTeamScoreState, RightTeamScoreState} from '../atoms'
-import { leftCountryNameState, rightCountryNameState, rightFlagState, leftFlagStates } from '../selectors'
+import { leftCountryNameState, rightCountryNameState, rightFlagState, leftFlagState } from '../selectors'
 
 
 function Preview() {
@@ -10,11 +10,14 @@ function Preview() {
     const [leftTeamScore, setLeftTeamScore] = useRecoilState(LeftTeamScoreState);
     const [rightTeamScore, setRightTeamScore] = useRecoilState(RightTeamScoreState);
     const rightFlag = useRecoilValue(rightFlagState);
+    const leftFlag = useRecoilValue(leftFlagState);
 
     return (
       <div className="Preview">
-        <img src={rightFlag} alt="flag"></img>
+        <img src={leftFlag} alt="home_flag"></img>
+        <img src={rightFlag} alt="away_flag"></img>
         <label>Stadium name: {stadium}</label>
+        <label>{leftTeamScore} : {rightTeamScore}</label>
       </div>
     );
   }
