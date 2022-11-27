@@ -1,6 +1,7 @@
 import Editor from './components/Editor';
 import Preview from './components/Preview';
 import {RecoilRoot} from 'recoil';
+import './styling.css'
 
 function App() {
   return (

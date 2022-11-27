@@ -1,0 +1,105 @@
+.App {
+    display: flex;
+    gap: 5%;
+    height: 100vh;
+}
+
+
+.Editor {
+    margin-left: 5%;
+    margin-top: 5%;
+    width: 35%;
+    height: 400px;
+    background-color: #BEE3DB;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#country_codes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #89B0AE;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+}
+
+#stadium_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #89B0AE;
+    width: 80%;
+    height: 40%;
+    border-radius: 10px;
+}
+
+#scores_div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    background-color: #89B0AE;
+    width: 80%;
+    height: 40%;
+    border-radius: 10px;
+    margin-bottom: 10%;
+}
+
+.Preview {
+    width: 50%;
+    margin-top: 5%;
+    height: 400px;
+    background-color: #BEE3DB;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#flags_teams {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#left img, #right img{
+    width: 150px;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#stadium_scores {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#stadium_scores span{
+    font-size: 100px;
+}
