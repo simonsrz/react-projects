@@ -1,28 +1,28 @@
 /* eslint-disable jest/no-conditional-expect */
-import {rest} from 'msw'
-import {setupServer} from "msw/node";
-import {getEmployees} from "./api";
+import { rest } from 'msw'
+import { setupServer } from "msw/node";
+import { getEmployees } from "./api";
 
 //region server mock
 const server = setupServer(
     rest.get('*/employees', (request, response, ctx) => {
         return response(ctx.json([
-                {
-                    "id": "5dc9bdc63d2a39982fbf83d8",
-                    "isActive": true,
-                    "name": "Bates Parker"
-                },
-                {
-                    "id": "5dc9bdc6f0c10cec4f579a65",
-                    "isActive": false,
-                    "name": "Hobbs Sullivan"
-                },
-                {
-                    "id": "5dc9bdc6cd6f618976e00dfa",
-                    "isActive": true,
-                    "name": "Alisha Stephenson"
-                }
-            ]
+            {
+                "id": "5dc9bdc63d2a39982fbf83d8",
+                "isActive": true,
+                "name": "Bates Parker"
+            },
+            {
+                "id": "5dc9bdc6f0c10cec4f579a65",
+                "isActive": false,
+                "name": "Hobbs Sullivan"
+            },
+            {
+                "id": "5dc9bdc6cd6f618976e00dfa",
+                "isActive": true,
+                "name": "Alisha Stephenson"
+            }
+        ]
         ));
     })
 );
@@ -70,7 +70,7 @@ describe('employees fetching tests', () => {
             // necessary due to error in jest documentation
             expect(true).toBeFalsy();
         }
-        catch (e){
+        catch (e) {
             expect((e as Response).status).toBe(500);
             expect((e as Response).ok).toBeFalsy();
             expect((e as Response).statusText).toBe('Internal Server Error');

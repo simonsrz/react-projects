@@ -1,5 +1,5 @@
 import React from "react";
-import {render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Loader from "./Loader";
 
 /*
@@ -10,27 +10,27 @@ findBy - async, finds or throws
 
 describe('Loader label test', () => {
     test('Loader should present default label when loading', () => {
-        render(<Loader loading={true}/>);
+        render(<Loader loading={true} />);
         expect(screen.getByText('Loading...')).toBeTruthy();
     });
 
     test('Loader shouldn\'t present default label when not loading', () => {
-        render(<Loader loading={false}/>);
+        render(<Loader loading={false} />);
         expect(screen.queryByText('Loading...')).toBeFalsy();
     });
 
     test('Loader should present label from property when given one and loading', () => {
-        render(<Loader loading={true} label={'label'}/>);
+        render(<Loader loading={true} label={'label'} />);
         expect(screen.getByText('label...')).toBeTruthy();
     });
 
     test('Loader shouldn\'t present label from property when given one and not loading', () => {
-        render(<Loader loading={false} label={'label'}/>);
+        render(<Loader loading={false} label={'label'} />);
         expect(screen.queryByText('label...')).toBeFalsy();
     });
 
     test('Default label should be replaced if given another one', () => {
-        render(<Loader loading={true} label={'label'}/>);
+        render(<Loader loading={true} label={'label'} />);
         expect(screen.getByText('label...')).toBeTruthy();
         expect(screen.queryByText('Loading...')).toBeFalsy();
     });
@@ -55,7 +55,7 @@ describe('Loader children test', () => {
 
 describe('Loader snapshot tests', () => {
     test('Loader should match inline snapshot', () => {
-        const {container} = render(<Loader loading={true}/>);
+        const { container } = render(<Loader loading={true} />);
         expect(container).toMatchInlineSnapshot(`
     <div>
       Loading...
@@ -66,7 +66,7 @@ describe('Loader snapshot tests', () => {
     test('App with mocked List should match snapshot', () => {
         const component = <div>Loader child</div>
 
-        const {container} = render(<Loader loading={false}>{component}</Loader>);
+        const { container } = render(<Loader loading={false}>{component}</Loader>);
         expect(container).toMatchSnapshot();
     })
 });
