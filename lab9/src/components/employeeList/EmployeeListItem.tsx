@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {Employee} from "../../model/Employee";
-import {deleteEmployee} from "../../logic/api";
+import React, { useState } from 'react';
+import { Employee } from "../../model/Employee";
+import { deleteEmployee } from "../../logic/api";
 import Loader from "../utils/Loader";
 
 export interface EmployeeListItemProps {
@@ -10,7 +10,9 @@ export interface EmployeeListItemProps {
 
 const EmployeeListItem: React.FC<EmployeeListItemProps> = (props: EmployeeListItemProps) => {
     return (
-        <></>
+        <>
+            <div>{props.employee.name}</div>
+        </>
     );
 }
 
