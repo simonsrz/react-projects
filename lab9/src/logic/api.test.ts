@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 import { rest } from 'msw'
 import { setupServer } from "msw/node";
-import { getEmployees } from "./api";
+import { addEmployee, deleteEmployee, getEmployees } from "./api";
 
 //region server mock
 const server = setupServer(
@@ -24,6 +24,9 @@ const server = setupServer(
             }
         ]
         ));
+    }),
+    rest.post('*/employees', (request, response, ctx) => {
+        return response(ctx.json(request.body));
     })
 );
 //endregion
@@ -68,6 +71,38 @@ describe('employees fetching tests', () => {
 
             // walkaround - validation that getEmployees did throw an error.
             // necessary due to error in jest documentation
+            expect(true).toBeFalsy();
+        }
+        catch (e) {
+            expect((e as Response).status).toBe(500);
+            expect((e as Response).ok).toBeFalsy();
+            expect((e as Response).statusText).toBe('Internal Server Error');
+        }
+    })
+})
+
+describe('employees adding tests', () => {
+    test('adding should add valid objects', async () => {
+        const employee = await addEmployee({ id: "123asd123", isActive: true, name: "addTest" });
+        expect(JSON.stringify(employee)).toBe(JSON.stringify({ id: "123asd123", isActive: true, name: "addTest" }));
+
+    });
+
+    test('adding should throw in case of error', async () => {
+        server.use(
+            rest.post('*/employees', (request, response, ctx) => {
+                return response(
+                    ctx.status(500),
+                    ctx.json({
+                        errorCode: 1,
+                        errorMessage: 'Internal error',
+                    })
+                )
+            })
+        );
+
+        try {
+            await addEmployee({ id: "123asd123", isActive: true, name: "addTest" });
             expect(true).toBeFalsy();
         }
         catch (e) {

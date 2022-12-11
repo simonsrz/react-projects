@@ -14,11 +14,20 @@ const EmployeeList: React.FC = () => {
             .catch(e => console.error(JSON.stringify(e)))
             .finally(() => setLoading(false))
     }, [])
+
+    const updateList = async () => {
+        setLoading(true);
+        getEmployees()
+            .then(employees => setEmployees(employees))
+            .catch(e => console.error(JSON.stringify(e)))
+            .finally(() => setLoading(false))
+    }
+
     return (
         <Loader loading={loading}>
             <h1>Employee list</h1>
-            {employees.map(employee => <EmployeeListItem employee={employee} updateList={() => { }} />)}
-            <AddEmployeeFormContainer updateList={() => { }} />
+            {employees.map(employee => <EmployeeListItem employee={employee} updateList={updateList} />)}
+            <AddEmployeeFormContainer updateList={updateList} />
         </Loader>
     );
 }

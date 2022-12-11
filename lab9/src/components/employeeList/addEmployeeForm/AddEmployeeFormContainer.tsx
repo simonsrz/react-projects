@@ -11,11 +11,22 @@ export interface AddEmployeeProps {
 const AddEmployeeFormContainer: React.FC<AddEmployeeProps> = (props: AddEmployeeProps) => {
 
     const [isHidden, setIsHidden] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const addEmployeeHandle = (e: Employee) => {
+        setLoading(true);
+        addEmployee(e)
+            .catch(e => console.error(JSON.stringify(e)))
+            .finally(() => {
+                setLoading(false);
+                props.updateList();
+            })
+    }
 
     return (
-        <>
-        {isHidden ? <AddEmployeeForm saveEmployee={()=>{}} hideForm={()=>{setIsHidden(true)}}/> : <button onClick={()=>{setIsHidden(!isHidden)}}>Add employee</button>}
-        </>
+        <Loader loading={loading} label='Saving'>
+            {isHidden ? <AddEmployeeForm saveEmployee={addEmployeeHandle} hideForm={() => setIsHidden(false)} /> : <button onClick={() => { setIsHidden(!isHidden) }}>Add employee</button>}
+        </Loader>
     )
 }
 

@@ -10,12 +10,13 @@ export interface AddEmployeeFormProps {
 const AddEmployeeForm: React.FC<AddEmployeeFormProps> = (props: AddEmployeeFormProps) => {
     const [newEmployeeName, setNewEmployeeName] = useState("");
 
-    const employeeHandling = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const employeeHandling: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setNewEmployeeName(e.target.value);
     }
 
-    const saveHandle = () => {
+    const saveHandle = async (e: React.FormEvent<HTMLFormElement>) => {
         props.saveEmployee({id: generateKey(), isActive: true, name: newEmployeeName});
+        e.preventDefault();
     }
 
     return (
