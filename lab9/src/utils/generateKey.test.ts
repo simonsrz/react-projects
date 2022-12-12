@@ -12,7 +12,7 @@ describe('generate key util function tests', () => {
 
         expect(key).not.toBeNull();
         expect(key).not.toBe(undefined);
-        expect(key.length).toBeGreaterThan(0);
+        expect(key?.length).toBeGreaterThan(0);
     });
 
     test('generateKey result should have 24 letters', () => {

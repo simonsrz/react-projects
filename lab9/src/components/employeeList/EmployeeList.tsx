@@ -6,7 +6,7 @@ import Loader from "../utils/Loader";
 import AddEmployeeFormContainer from './addEmployeeForm/AddEmployeeFormContainer';
 
 const EmployeeList: React.FC = () => {
-    const [employees, setEmployees] = useState([])
+    const [employees, setEmployees] = useState<Employee[]>([])
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         getEmployees()

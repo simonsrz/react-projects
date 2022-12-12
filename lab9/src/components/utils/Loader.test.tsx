@@ -46,7 +46,7 @@ describe('Loader children test', () => {
         expect(screen.queryByText('Loader child')).toBeFalsy();
     });
 
-    test('Loader shouldn present its children when not loading', () => {
+    test('Loader should present its children when not loading', () => {
         render(<Loader loading={false}>{component}</Loader>);
 
         expect(screen.getByText('Loader child')).toBeTruthy();

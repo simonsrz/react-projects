@@ -4,7 +4,7 @@ import { response } from "msw";
 
 const BASE_URL = 'http://localhost:3001';
 
-export const getEmployees = async () => {
+export const getEmployees: () => Promise<Employee[]> = async () => {
     return fetch(`${BASE_URL}/employees`)
         .then(response => {
             if (response.ok)

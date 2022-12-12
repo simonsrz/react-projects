@@ -74,10 +74,16 @@ describe('EmployeeList fetching test', () => {
         expect(screen.getByText('Loading...')).toBeTruthy();
     });
 
-    test('EmployeeList should render AddEmployeeFormContainer after having loaded', async () => {
+    test('EmployeeList should render header after having loaded', async () => {
         render(<EmployeeList/>);
 
         expect(await screen.findByText("Employee list")).toBeTruthy();
+    });
+
+    test('EmployeeList should render AddEmployeeFormContainer after having loaded', async () => {
+        render(<EmployeeList/>);
+
+        expect(await screen.findByText("Add employee")).toBeTruthy();
     });
 
     test('EmployeeList should render 3 list items after having loaded', async () => {
@@ -169,5 +175,12 @@ describe('EmployeeList error handling test', () => {
         expect((console.error as any).mock.calls[0][0]).toContain("Error");
 
         expect((console.error as any).mock.calls[0][0]).toContain("500");
+    });
+});
+
+describe('EmployeeList snapshot test', () => {
+    test('EmployeeList renders correctly', async () => {
+        const { container } = render(<EmployeeList/>);
+        expect(container).toMatchSnapshot();
     });
 });

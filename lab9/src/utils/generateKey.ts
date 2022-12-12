@@ -1,4 +1,4 @@
-export const generateKey = () => {
+export const generateKey = (): any => {
     var result = '';
     const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;

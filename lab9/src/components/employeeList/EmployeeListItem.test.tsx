@@ -54,3 +54,18 @@ describe('EmployeeListItem button test', () => {
         expect(screen.queryByText("Deleting...")).toBeTruthy();
     });
 });
+
+describe('EmployeeListItem snapshot test', () => {
+    const employee: Employee = {
+        id: 'super-cool-id',
+        name: 'Bob Marley',
+        isActive: true
+    };
+
+    const noop = () => { }
+
+    test('EmployeeListItem renders correctly', async () => {
+        const { container } = render(<EmployeeListItem employee={employee} updateList={noop} />)
+        expect(container).toMatchSnapshot();
+    });
+});
