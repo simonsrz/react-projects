@@ -23,11 +23,21 @@ export default function App() {
             name="Camera"
             component={CameraView}
             options={{
-              tabBarIcon: () => <Ionicons name={"home"} />,
+              tabBarIcon: () => <Ionicons name={"camera"} size={28}/>,
             }}
           />
-          <Tab.Screen name="Photo" component={PhotoView} />
-          <Tab.Screen name="Gallery" component={GalleryView} />
+          <Tab.Screen 
+            name="Photo" 
+            component={PhotoView} 
+            options={{
+              tabBarIcon: () => <Ionicons name={"home"} size={28}/>,
+            }}/>
+          <Tab.Screen 
+            name="Gallery" 
+            component={GalleryView} 
+            options={{
+              tabBarIcon: () => <Ionicons name={"list"}  size={28}/>,
+            }}/>
         </Tab.Navigator>
       </NavigationContainer>
     </ImageContext.Provider>
